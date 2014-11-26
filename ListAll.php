@@ -1,8 +1,8 @@
 <?php
 
 $username="root";
-$password="d3lib3R160!";
-$database="KevinsData";
+$password="blah2!";
+$database="blah";
 
 $connection = mysql_connect(localhost,$username,$password);
 // Check connection
