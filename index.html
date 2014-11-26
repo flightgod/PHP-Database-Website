@@ -1,0 +1,92 @@
+<html>
+<head>
+<link href="/Includes/CSSfile.css" rel="stylesheet" type="text/css">
+<script>
+
+function showDB()
+{
+
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      document.getElementById("txtHint2").innerHTML=xmlhttp.responseText;
+    }
+  }
+
+  xmlhttp.open("GET","ListAll.php");
+  xmlhttp.send();
+}
+
+
+function showUser(str) {
+  if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  } 
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    }
+  }
+  xmlhttp.open("GET","getuser.php?q="+str,true);
+  xmlhttp.send();
+}
+
+
+
+</script>
+</head>
+<body>
+
+<form>
+<select name="users" onchange="showUser(this.value)">
+<option value="">Select a Week:</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="20">20</option>
+</select>
+</form>
+<br>
+<p class="TableHeaderStyle"><div id="txtHint">Game info will be listed here.</div></p>
+
+<form action="insert.php" method="post">     
+id: <input type="number" name="id" /><br>
+faction: <input type="text" name="faction" /><br>
+Opponent: <input type="text" name="Opponent" /><br>
+WinLoss: <input type="text" name="WinLoss" /><br>
+gamedate: <input type="date" name="gamedate" /><br>
+<input type="Submit" value="New" name="save" />
+<input type="Submit" value="Update" name="update" />
+</form>
+
+
+<button onclick="showDB();">Database</button>
+<br>
+<div id="txtHint2">Database should display here.</div>
+
+
+</body>
+</html>
