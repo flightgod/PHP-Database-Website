@@ -1,7 +1,7 @@
 <?php
 
 $username="root";
-$password="d3lib3R160!";
+$password="blah2";
 $database="KevinsData";
 
 $id=$_POST['id'];
