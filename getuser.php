@@ -1,7 +1,7 @@
 <?php
 $q = intval($_GET['q']);
 
-$con = mysqli_connect('localhost','root','d3lib3R160!','KevinsData');
+$con = mysqli_connect('localhost','root','blah2!','KevinsData');
 if (!$con) {
   die('Could not connect: ' . mysqli_error($con));
 }
